@@ -11,7 +11,7 @@
         <environment id="development">
             <transactionManager type="MANAGED"/>
             <dataSource type="JNDI">
-                <property name="data_source" value="PlayersDataSource"/>
+                <property name="data_source" value="PokemonDataSource"/>
             </dataSource>
         </environment>
     </environments>
