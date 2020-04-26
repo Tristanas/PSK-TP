@@ -2,9 +2,11 @@ package lt.vu.persistence;
 
 import lt.vu.entities.Trainer;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+@ApplicationScoped
 public class TrainersDAO {
 
     @Inject

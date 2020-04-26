@@ -15,6 +15,8 @@ public class LoginRegister {
     @Inject
     private TrainersDAO trainersDAO;
 
+    @Setter
+    @Getter
     private Trainer trainer;
 
     @Setter
