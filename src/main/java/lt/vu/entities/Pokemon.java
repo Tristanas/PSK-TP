@@ -13,17 +13,21 @@ import java.io.Serializable;
 public class Pokemon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "NUMBER")
     private Integer number;
 
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name="TRAINER_ID")
     private Trainer trainer;
 
-    @Column(name = "NAME", unique = true)
+    @Column(name = "NAME")
     private String name;
 
-    @Size(max = 40)
+    //@Size(max = 40)
     @Column(name = "LEVEL")
-    private float level;
+    private Integer level;
 
     private int combatPower;
 

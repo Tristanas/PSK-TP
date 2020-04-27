@@ -44,6 +44,11 @@ public class Trainer implements Serializable {
 
     public Trainer() {
     }
+
+    public void gainXP(int xp) {
+        if (xp < 1) return;
+        this.xp += xp;
+    }
 }
 
 

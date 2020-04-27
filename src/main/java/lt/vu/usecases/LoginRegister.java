@@ -2,12 +2,15 @@ package lt.vu.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lt.vu.entities.Trainer;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.TrainersDAO;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 @Model
@@ -23,14 +26,27 @@ public class LoginRegister {
     @Getter
     private String username;
 
+    @Setter
+    @Getter
+    private String error;
+
+    @PostConstruct
+    public void init()
+    {
+        error = "";
+    }
+
     public String login() {
-        trainer = trainersDAO.findByUsername(username);
-        // No trainer found, there should be a notification for failed login.
-        if (trainer == null) {
+        try{
+            trainer = trainersDAO.findByUsername(username);
+        } catch (NoResultException e)
+        {
+            error = "Incorrect login credentials.";
             return "index";
         }
 
-        return "trainer?faces-redirect=true&teamId=" + this.trainer.getId();
+        trainersDAO.setCurrentTrainerId(trainer.getId());
+        return "trainer?faces-redirect=true";
     }
 
     @Transactional
@@ -41,6 +57,7 @@ public class LoginRegister {
         trainer.setLevel(1);
         trainer.setXp(0);
         trainersDAO.persist(trainer);
-        return "trainer?faces-redirect=true&teamId=" + this.trainer.getId();
+        trainersDAO.setCurrentTrainerId(trainer.getId());
+        return "trainer?faces-redirect=true";
     }
 }

@@ -2,21 +2,46 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
 <head>
-    <title>Welcome to Pokemon don't go!</title>
+    <title>Welcome to Pokemon "Don't Go"!</title>
 </head>
 <body>
-    <p>
-        Placeholder for account info: level, xp, caught pokemon count.
-    </p>
+    <h2>Trainer Information:</h2>
+    <ul>
+        <li>Username: #{trainerManagement.trainer.username}</li>
+        <li>Level: #{trainerManagement.trainer.level}</li>
+        <li>XP: #{trainerManagement.trainer.xp}</li>
+    </ul>
 
-    <p>
-        Placeholder for the list of caught pokemon.
-    </p>
+    <h2>Caught pokemon:</h2>
+    <ol>
+        <ui:repeat value="#{trainerManagement.trainer.pokemonList}" var="pokemon">
+            <li>
+                #{pokemon.name}: Level #{pokemon.level}, CP #{pokemon.combatPower}
+            </li>
+        </ui:repeat>
+    </ol>
 
-    <p>
-        Placeholder for gym badges list.
-    </p>
+    <h2>Earned gym badges:</h2>
+    <ol>
+        <ui:repeat value="#{trainerManagement.trainer.gymBadges}" var="badge">
+            <li>
+                #{badge.gymName}
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h:link outcome="gyms" value="Visit a gym!"/>
+
+    <h:form>
+        <h2>Create a new gym badge:</h2>
+        <h:outputLabel for="gymNameInput" value="Gym Name" />
+        <h:inputText id="gymNameInput" value="#{trainerManagement.newBadgeName}"/>
+        <h:commandButton action="#{trainerManagement.createGymBadge}" value="Create" />
+    </h:form>
 </body>
 </html>

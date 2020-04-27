@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+<head>
+    <title>Encounter</title>
+</head>
+<body>
+    <h2>A wild Pokemon appeared!</h2>
+    <ul>
+        <li>Name: #{gymVisit.encounteredPokemon.name}</li>
+        <li>Level: #{gymVisit.encounteredPokemon.level}</li>
+        <li>CP: #{gymVisit.encounteredPokemon.cp}</li>
+    </ul>
+    <h:form>
+        <h:commandButton value="Catch it" action="#{gymVisit.catchPokemon}"/>
+        <h:commandButton value="Skip it" action="trainer" />
+    </h:form>
+</body>
+</html>

@@ -9,9 +9,11 @@
 <h:body>
     <h2>Log in to pokemon!</h2>
     <h:form>
-        <h:inputText value="#{loginRegister.username}" required="true" p:placeholder="username" />
+        <h:outputLabel for="username" value="Username"/>
+        <h:inputText id="username" value="#{loginRegister.username}" required="true" p:placeholder="username" />
         <h:commandButton value="Log in" action="#{loginRegister.login}" />
         <h:commandButton value="Register a new Trainer" action="#{loginRegister.registerTrainer}" />
+        <h:outputText value="#{loginRegister.error}" style="color: red"/>
     </h:form>
 <!--    <h:link outcome="myBatis/teams" value="MyBatis implementation"/>-->
 </h:body>
