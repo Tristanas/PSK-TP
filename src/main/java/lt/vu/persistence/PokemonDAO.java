@@ -12,28 +12,29 @@ public class PokemonDAO {
     @Inject
     private EntityManager em;
 
-    private Pokemon randomPokemon = null;
+//    private Pokemon randomPokemon = null;
 
     String[] pokemonNames = {"Pikachu", "Charizard", "Squirtle", "Bulbasaur",
             "Weedle", "Ratata", "Pidgey", "Wurmple"};
 
-    public Pokemon getRandomPokemon()
-    {
-        if (randomPokemon == null)
-            setRandomPokemon();
-        return randomPokemon;
-    }
+//    public Pokemon getRandomPokemon()
+//    {
+//        if (randomPokemon == null)
+//            setRandomPokemon();
+//        return randomPokemon;
+//    }
 
-    public void setRandomPokemon()
+    public Pokemon getRandomPokemon() // public void setRandomPokemon()
     {
         Random rand = new Random();
-        randomPokemon = new Pokemon();
+        Pokemon randomPokemon = new Pokemon();
         int i = rand.nextInt(pokemonNames.length);
         int randomLevel = rand.nextInt(25);
         randomPokemon.setNumber(i + 1);
         randomPokemon.setLevel(randomLevel);
         randomPokemon.setCombatPower((randomLevel * 24) + rand.nextInt(100));
         randomPokemon.setName(pokemonNames[i]);
+        return randomPokemon;
     }
 
     public void update(Pokemon pokemon) { em.merge(pokemon);}

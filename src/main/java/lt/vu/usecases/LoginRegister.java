@@ -2,7 +2,6 @@ package lt.vu.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lt.vu.entities.Trainer;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.TrainersDAO;

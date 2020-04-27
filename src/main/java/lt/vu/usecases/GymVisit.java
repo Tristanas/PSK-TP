@@ -9,12 +9,19 @@ import lt.vu.persistence.PokemonDAO;
 import lt.vu.persistence.TrainersDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 
-@Model
-public class GymVisit {
+
+// If this bean is set to @RequestScoped, PostConstruct will be called twice before the pokemon is caught.
+// Thus an unexpected pokemon would be caught.
+// Perhaps the pokemon was shown in one request and caught in a different one, thus a different pokemon was caught.
+@Named
+@ViewScoped
+public class GymVisit implements Serializable {
     @Inject
     private PokemonDAO pokemonDAO;
 
@@ -32,8 +39,6 @@ public class GymVisit {
         encounteredPokemon = pokemonDAO.getRandomPokemon();
     }
 
-    // For some reason PostConstruct is called for the second time before catchPokemon() is executed.
-    // Probably because this bean is initialized once the page is loaded and again when the button is clicked due to the references.
     @LoggedInvocation
     @Transactional
     public String catchPokemon()
@@ -44,7 +49,6 @@ public class GymVisit {
         System.out.println("A pokemon was caught.");
         trainer.gainXP(100);
         trainersDAO.update(trainer);
-        pokemonDAO.setRandomPokemon();
         return "trainer?faces-redirect=true";
     }
 }

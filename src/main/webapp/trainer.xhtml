@@ -40,7 +40,7 @@
     <h:form>
         <h2>Create a new gym badge:</h2>
         <h:outputLabel for="gymNameInput" value="Gym Name" />
-        <h:inputText id="gymNameInput" value="#{trainerManagement.newBadgeName}"/>
+        <h:inputText id="gymNameInput" value="#{trainerManagement.newBadge.gymName}"/>
         <h:commandButton action="#{trainerManagement.createGymBadge}" value="Create" />
     </h:form>
 </body>
