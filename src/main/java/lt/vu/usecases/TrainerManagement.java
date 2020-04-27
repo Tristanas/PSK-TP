@@ -31,18 +31,18 @@ public class TrainerManagement {
 
     @Getter
     @Setter
-    private String newBadgeName;
+    private GymBadge newBadge;
 
     @PostConstruct
     public void init() {
         this.trainer = trainersDAO.getCurrentTrainer();
+        System.out.println("PostConstruct was called");
+        newBadge = new GymBadge();
     }
 
     @Transactional
     @LoggedInvocation
     public String createGymBadge() {
-        GymBadge newBadge = new GymBadge();
-        newBadge.setGymName(newBadgeName);
         badgeDAO.persist(newBadge);
         return "trainer?faces-redirect=true";
     }
