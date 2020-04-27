@@ -57,7 +57,7 @@
     JOIN public.trainer tr on p.trainer_id = tr.id
     WHERE tr.id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectBadgesForTrainer" resultType="Pokemon">
+  <select id="selectBadgesForTrainer" resultType="Gymbadge">
     SELECT gb.gymname, gb.id
     FROM public.gymbadge gb
     JOIN public.trainer_badge trgb on trgb.gymbadges_id = gb.id
