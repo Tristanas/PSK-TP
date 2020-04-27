@@ -4,8 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lt.vu.mybatis.model.Team" alias="Team"/>
-        <typeAlias type="lt.vu.mybatis.model.Player" alias="Player"/>
+        <typeAlias type="lt.vu.mybatis.model.Trainer" alias="Trainer"/>
+        <typeAlias type="lt.vu.mybatis.model.Pokemon" alias="Pokemon"/>
+        <typeAlias type="lt.vu.mybatis.model.Gymbadge" alias="Gymbadge"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -16,7 +17,9 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/TeamMapper.xml"/>
-        <mapper resource="mybatis.xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis.xml/TrainerMapper.xml"/>
+        <mapper resource="mybatis.xml/PokemonMapper.xml"/>
+        <mapper resource="mybatis.xml/GymBadgeMapper.xml" />
+        <mapper resource="mybatis.xml/TrainerBadgeMapper.xml" />
     </mappers>
 </configuration>
