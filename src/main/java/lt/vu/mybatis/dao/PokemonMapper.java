@@ -2,8 +2,9 @@ package lt.vu.mybatis.dao;
 
 import java.util.List;
 import lt.vu.mybatis.model.Pokemon;
-import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.cdi.Mapper;
 
+@SuppressWarnings("CdiManagedBeanInconsistencyInspection")
 @Mapper
 public interface PokemonMapper {
     /**

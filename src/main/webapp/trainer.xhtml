@@ -43,5 +43,9 @@
         <h:inputText id="gymNameInput" value="#{trainerManagement.newBadge.gymName}"/>
         <h:commandButton action="#{trainerManagement.createGymBadge}" value="Create" />
     </h:form>
+
+    <h:link outcome="myBatis/trainer" value="MyBatis implementation">
+        <f:param name="trainerId" value="#{trainerManagement.trainer.id}" />
+    </h:link>
 </body>
 </html>

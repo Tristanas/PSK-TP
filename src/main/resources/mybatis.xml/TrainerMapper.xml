@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
 <mapper namespace="lt.vu.mybatis.dao.TrainerMapper">
   <resultMap id="BaseResultMap" type="lt.vu.mybatis.model.Trainer">
     <!--
@@ -52,14 +53,14 @@
   </update>
   <select id="selectPokemonForTrainer" resultType="Pokemon">
     SELECT p.id, p.name, p.level, p.number, p.combatpower
-    FROM public.pokemon p2
-    JOIN public.trainer tr on p2.trainer_id = tr.id
+    FROM public.pokemon p
+    JOIN public.trainer tr on p.trainer_id = tr.id
     WHERE tr.id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectBadgesForTrainer" resultType="Pokemon">
-    SELECT b.gymname
+    SELECT gb.gymname, gb.id
     FROM public.gymbadge gb
-    JOIN public trainer_badge trgb on trgb.gymbadges_id = gb.id
+    JOIN public.trainer_badge trgb on trgb.gymbadges_id = gb.id
     WHERE trgb.trainer_id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

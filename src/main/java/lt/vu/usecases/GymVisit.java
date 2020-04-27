@@ -9,6 +9,8 @@ import lt.vu.persistence.PokemonDAO;
 import lt.vu.persistence.TrainersDAO;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.BeforeDestroyed;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,8 +37,13 @@ public class GymVisit implements Serializable {
     @PostConstruct
     public void spawnPokemon()
     {
-        System.out.println("A pokemon was encountered.");
+        System.out.println("Gym visit began.");
         encounteredPokemon = pokemonDAO.getRandomPokemon();
+    }
+
+    @PreDestroy
+    public void goodBye(){
+        System.out.print("Gym visit ended.");
     }
 
     @LoggedInvocation

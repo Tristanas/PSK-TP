@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <h2>Trainer Information:</h2>
+    <ul>
+        <li>Username: #{trainerMyBatis.trainer.username}</li>
+        <li>Level: #{trainerMyBatis.trainer.level}</li>
+        <li>XP: #{trainerMyBatis.trainer.xp}</li>
+    </ul>
+
+    <h2>Caught pokemon:</h2>
+    <ol>
+        <ui:repeat value="#{trainerMyBatis.trainer.pokemonList}" var="pokemon">
+            <li>
+                #{pokemon.name}: Level #{pokemon.level}, CP #{pokemon.combatpower}
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h2>Earned gym badges:</h2>
+    <ol>
+<!--        <ui:repeat value="#{trainerMyBatis.trainer.gymbadges}" var="badge">-->
+<!--            <li>-->
+<!--                #{badge.gymname}-->
+<!--            </li>-->
+<!--        </ui:repeat>-->
+    </ol>
+
+<!--    <h:link outcome="gyms" value="Visit a gym!"/>-->
+
+    <h:form>
+        <h2>Create a new gym badge:</h2>
+        <h:outputLabel for="gymNameInput" value="Gym Name" />
+        <h:inputText id="gymNameInput" value="#{trainerMyBatis.newBadge.gymname}"/>
+        <h:commandButton action="#{trainerMyBatis.createGymBadge}" value="Create" >
+            <f:param name="trainerId" value="#{trainerMyBatis.trainer.id}" />
+        </h:commandButton>
+    </h:form>
+
+    <h:link outcome="trainer" value="Return to standard implementation" />
+</body>
+</html>
