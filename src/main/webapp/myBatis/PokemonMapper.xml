@@ -13,6 +13,8 @@
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="NUMBER" jdbcType="INTEGER" property="number" />
     <result column="TRAINER_ID" jdbcType="INTEGER" property="trainerId" />
+    <association property="trainer" columnPrefix="trainer_"
+                 resultMap="lt.vu.mybatis.dao.TrainerMapper.BaseResultMap" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--

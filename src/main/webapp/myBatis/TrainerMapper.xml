@@ -11,6 +11,12 @@
     <result column="LEVEL" jdbcType="INTEGER" property="level" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
     <result column="XP" jdbcType="INTEGER" property="xp" />
+    <collection property="pokemonList" javaType="ArrayList"
+                ofType="Pokemon" column="id"
+                select="selectPokemonForTrainer" />
+    <collection property="gymbadges" javaType="ArrayList"
+                ofType="Gymbadge" column="id"
+                select="selectBadgesForTrainer" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -44,6 +50,18 @@
       XP = #{xp,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectPokemonForTrainer" resultType="Pokemon">
+    SELECT p.id, p.name, p.level, p.number, p.combatpower
+    FROM public.pokemon p2
+    JOIN public.trainer tr on p2.trainer_id = tr.id
+    WHERE tr.id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectBadgesForTrainer" resultType="Pokemon">
+    SELECT b.gymname
+    FROM public.gymbadge gb
+    JOIN public trainer_badge trgb on trgb.gymbadges_id = gb.id
+    WHERE trgb.trainer_id = #{id,jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
