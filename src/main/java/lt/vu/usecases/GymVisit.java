@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Pokemon;
 import lt.vu.entities.Trainer;
-import lt.vu.game.PokemonSpawn;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.PokemonDAO;
 import lt.vu.persistence.TrainersDAO;
@@ -24,33 +23,28 @@ public class GymVisit {
 
     @Setter
     @Getter
-    private PokemonSpawn encounteredPokemon;
+    private Pokemon encounteredPokemon;
 
     @PostConstruct
     public void spawnPokemon()
     {
         System.out.println("A pokemon was encountered.");
-        if (encounteredPokemon != null) return;
-        encounteredPokemon = pokemonDAO.getSpawnedPokemon();
+        encounteredPokemon = pokemonDAO.getRandomPokemon();
     }
 
     // For some reason PostConstruct is called for the second time before catchPokemon() is executed.
+    // Probably because this bean is initialized once the page is loaded and again when the button is clicked due to the references.
     @LoggedInvocation
     @Transactional
     public String catchPokemon()
     {
         Trainer trainer = trainersDAO.getCurrentTrainer();
-        Pokemon caughtPokemon = new Pokemon();
-
-        caughtPokemon.setCombatPower(encounteredPokemon.getCp());
-        caughtPokemon.setNumber(encounteredPokemon.getNumber());
-        caughtPokemon.setLevel(encounteredPokemon.getLevel());
-        caughtPokemon.setName(encounteredPokemon.getName());
-        caughtPokemon.setTrainer(trainer);
-        pokemonDAO.persist(caughtPokemon);
+        encounteredPokemon.setTrainer(trainer);
+        pokemonDAO.persist(encounteredPokemon);
         System.out.println("A pokemon was caught.");
         trainer.gainXP(100);
         trainersDAO.update(trainer);
+        pokemonDAO.setRandomPokemon();
         return "trainer?faces-redirect=true";
     }
 }
