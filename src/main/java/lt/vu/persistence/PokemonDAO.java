@@ -43,5 +43,9 @@ public class PokemonDAO {
 
     public Pokemon findOne(Integer id) {return em.find(Pokemon.class, id);}
 
-    public void remove(Pokemon pokemon) { em.remove(pokemon);}
+    public void remove(Pokemon pokemon) {
+        // Making sure the entity is in managed state.
+        pokemon = em.merge(pokemon);
+        em.remove(pokemon);
+    }
 }

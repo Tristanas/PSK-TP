@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xml:lang="en" lang="en">
-<head>
+<h:head>
     <title>Encounter</title>
-</head>
-<body>
+</h:head>
+<h:body>
     <h2>A wild Pokemon appeared!</h2>
     <ul>
         <li>Name: #{gymVisit.encounteredPokemon.name}</li>
@@ -19,5 +19,5 @@
         <h:commandButton value="Catch it" action="#{gymVisit.catchPokemon}"/>
         <h:commandButton value="Skip it" action="trainer" />
     </h:form>
-</body>
+</h:body>
 </html>

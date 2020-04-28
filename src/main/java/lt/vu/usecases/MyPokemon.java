@@ -41,6 +41,8 @@ public class MyPokemon implements Serializable {
         try {
             pokemonId  = Integer.parseInt(requestParameters.get("pokemonId"));
             viewedPokemon = pokemonDAO.findOne(pokemonId);
+            System.out.println("Found pokemon: " + pokemonId + " ID, " + viewedPokemon.getName() + ", level " +
+                    viewedPokemon.getLevel() + " " + viewedPokemon.getCombatPower());
         } catch (NumberFormatException e) {
             // A redirect is likely occurring.
             viewedPokemon = new Pokemon();
@@ -55,6 +57,7 @@ public class MyPokemon implements Serializable {
 
     @Transactional
     public String powerUp() {
+        // This will also rename the pokemon if the name field is changed.
         viewedPokemon.powerUp();
         pokemonDAO.update(viewedPokemon);
         return getRefreshUrl();
@@ -70,7 +73,8 @@ public class MyPokemon implements Serializable {
     @Transactional
     @LoggedInvocation
     public String transfer() {
-        System.out.println("Deleting: " + viewedPokemon.getName() + " named level " + viewedPokemon.getLevel() + " pokemon");
+        System.out.println("Deleting pokemon: " + viewedPokemon.getId() + " ID, " + viewedPokemon.getName() + ", level " +
+                viewedPokemon.getLevel() + " " + viewedPokemon.getCombatPower());
         pokemonDAO.remove(viewedPokemon);
         return "trainer?faces-redirect=true";
     }

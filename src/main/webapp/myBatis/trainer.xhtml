@@ -6,10 +6,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
-<head>
+<h:head>
     <title>Title</title>
-</head>
-<body>
+</h:head>
+<h:body>
     <h2>Trainer Information:</h2>
     <ul>
         <li>Username: #{trainerMyBatis.trainer.username}</li>
@@ -46,6 +46,6 @@
         </h:commandButton>
     </h:form>
 
-    <h:link outcome="trainer" value="Return to standard implementation" />
-</body>
+    <h:link outcome="trainer?faces-redirect=true" value="Return to standard implementation" />
+</h:body>
 </html>
