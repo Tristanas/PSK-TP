@@ -31,7 +31,7 @@ public class PokemonDAO {
         int i = rand.nextInt(pokemonNames.length);
         int randomLevel = rand.nextInt(25);
         randomPokemon.setNumber(i + 1);
-        randomPokemon.setLevel(randomLevel);
+        randomPokemon.setLevel(randomLevel + 1);
         randomPokemon.setCombatPower((randomLevel * 24) + rand.nextInt(100));
         randomPokemon.setName(pokemonNames[i]);
         return randomPokemon;
@@ -42,4 +42,6 @@ public class PokemonDAO {
     public void persist(Pokemon pokemon) { em.persist(pokemon);}
 
     public Pokemon findOne(Integer id) {return em.find(Pokemon.class, id);}
+
+    public void remove(Pokemon pokemon) { em.remove(pokemon);}
 }

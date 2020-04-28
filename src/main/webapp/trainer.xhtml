@@ -21,7 +21,7 @@
     <ol>
         <ui:repeat value="#{trainerManagement.trainer.pokemonList}" var="pokemon">
             <li>
-                #{pokemon.name}: Level #{pokemon.level}, CP #{pokemon.combatPower}
+               <h:link value="#{pokemon.name}" outcome="pokemon?pokemonId=#{pokemon.id}" />
             </li>
         </ui:repeat>
     </ol>

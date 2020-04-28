@@ -21,18 +21,18 @@
     <ol>
         <ui:repeat value="#{trainerMyBatis.trainer.pokemonList}" var="pokemon">
             <li>
-                #{pokemon.name}: Level #{pokemon.level}, CP #{pokemon.combatpower}
+                 #{pokemon.name}: Level #{pokemon.level}, CP #{pokemon.combatpower}
             </li>
         </ui:repeat>
     </ol>
 
     <h2>Earned gym badges:</h2>
     <ol>
-<!--        <ui:repeat value="#{trainerMyBatis.trainer.gymbadges}" var="badge">-->
-<!--            <li>-->
-<!--                #{badge.gymname}-->
-<!--            </li>-->
-<!--        </ui:repeat>-->
+        <ui:repeat value="#{trainerMyBatis.trainer.gymbadges}" var="badge">
+            <li>
+                #{badge.gymname}
+            </li>
+        </ui:repeat>
     </ol>
 
 <!--    <h:link outcome="gyms" value="Visit a gym!"/>-->

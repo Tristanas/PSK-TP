@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Gyms</title>
+</head>
+<body>
+    <h2>Pokemon Information:</h2>
+    <ul>
+        <li>Name: #{myPokemon.viewedPokemon.name}</li>
+        <li>Level: #{myPokemon.viewedPokemon.level}</li>
+        <li>Combat Power: #{myPokemon.viewedPokemon.combatPower}</li>
+    </ul>
+    <h:form>
+        <h2>Manage pokemon:</h2>
+        <h:inputText value="#{myPokemon.viewedPokemon.name}" id="newName" />
+        <h:commandButton action="#{myPokemon.rename}" value="Rename" >
+            <f:param value="#{myPokemon.viewedPokemon.id}" name="pokemonId" />
+        </h:commandButton>
+        <br/>
+        <h:commandButton action="#{myPokemon.powerUp}" value="Power up" >
+            <f:param value="#{myPokemon.viewedPokemon.id}" name="pokemonId" />
+        </h:commandButton>
+        <br/>
+        <h:commandLink value="Transfer" action="#{myPokemon.transfer}" />
+    </h:form>
+    <h:link value="Go to trainer" outcome="trainer" />
+</body>
+</html>
