@@ -19,5 +19,11 @@
             <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
             <h:link value="Go to trainer" outcome="trainer" />
         </h:form>
+        <h:form>
+            <h:outputText value="#{viewGymBadgeStatistics.statisticsRetrievalStatus}"/>
+            <h:commandButton value="How many earned a badge here?" disabled="#{viewGymBadgeStatistics.statisticsRetrievalRunning}" action="#{viewGymBadgeStatistics.getGymBadgeStatistics(gymView.gym.id)}">
+                <f:param name="gymId" value="#{gymView.gym.id}" />
+            </h:commandButton>
+        </h:form>
     </h:body>
 </html>

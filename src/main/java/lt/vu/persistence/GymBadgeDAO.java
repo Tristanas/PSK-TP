@@ -25,4 +25,10 @@ public class GymBadgeDAO {
         return em.createNamedQuery("GymBadge.findAll", GymBadge.class)
                 .getResultList();
     }
+
+    public List<GymBadge> getEarnedGymBadges(GymBadge badge) {
+        return list();
+        //        return em.createNamedQuery("GymBadge.findEarnedBadges", GymBadge.class)
+        //                .getResultList();
+    }
 }
