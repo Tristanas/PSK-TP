@@ -23,7 +23,7 @@ public class GymBadgeStatistics implements Serializable {
         } catch (InterruptedException e) {
             System.out.println("REEEEEException");
         }
-//        return badgeDAO.getEarnedGymBadges(badge);
+//        return badgeDAO.getEarnedGymBadges(badge).size();
         return 2;
     }
 }
