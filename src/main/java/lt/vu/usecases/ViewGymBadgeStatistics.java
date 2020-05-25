@@ -2,6 +2,7 @@ package lt.vu.usecases;
 
 import lt.vu.entities.GymBadge;
 import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.qualifiers.Transaction;
 import lt.vu.services.GymBadgeStatistics;
 
 import javax.enterprise.context.SessionScoped;

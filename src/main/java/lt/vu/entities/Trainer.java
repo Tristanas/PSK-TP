@@ -15,9 +15,10 @@ import java.util.List;
 @Getter
 @Table(name = "TRAINER")
 @EqualsAndHashCode(of = {"username"})
-@NamedQueries(
-        @NamedQuery(name = "Trainer.findByUsername", query = "select a from Trainer as a where a.username = :username")
-)
+@NamedQueries({
+        @NamedQuery(name = "Trainer.findByUsername", query = "select a from Trainer as a where a.username = :username"),
+        @NamedQuery(name = "Trainer.findAll", query = "select a from Trainer as a"),
+})
 public class Trainer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

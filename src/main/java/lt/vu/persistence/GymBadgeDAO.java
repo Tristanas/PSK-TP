@@ -1,11 +1,12 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.GymBadge;
-import lt.vu.mybatis.model.Gymbadge;
+import lt.vu.entities.Trainer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.TransactionScoped;
 import java.util.List;
 
 @ApplicationScoped
@@ -26,9 +27,4 @@ public class GymBadgeDAO {
                 .getResultList();
     }
 
-    public List<GymBadge> getEarnedGymBadges(GymBadge badge) {
-        return list();
-        //        return em.createNamedQuery("GymBadge.findEarnedBadges", GymBadge.class)
-        //                .getResultList();
-    }
 }

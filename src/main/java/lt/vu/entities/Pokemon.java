@@ -9,9 +9,6 @@ import java.io.Serializable;
 @Entity
 @Setter
 @Getter
-//@NamedQueries(
-//        @NamedQuery(name = "pokemon.deleteById", query = "delete from Pokemon where Pokemon.id = :id")
-//)
 public class Pokemon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

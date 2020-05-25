@@ -1,29 +1,30 @@
 package lt.vu.services;
 
 import lt.vu.entities.GymBadge;
-import lt.vu.persistence.GymBadgeDAO;
+import lt.vu.persistence.TransactionalGymBadgeDAO;
 
-import javax.ejb.Asynchronous;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 @ApplicationScoped
 public class GymBadgeStatistics implements Serializable {
-
+    // Special version of badgeDAO which uses TransactionScoped entity manager.
     @Inject
-    private GymBadgeDAO badgeDAO;
+    private TransactionalGymBadgeDAO badgeDAO;
 
 //    If this method is called asynchronously and uses badgeDAO, ExecutionExceptions occur and everything fails.
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public Integer getBadgeEarnedCount(Integer badgeId) {
-//        GymBadge badge = badgeDAO.findOne(badgeId);
+        int count = 0;
         try {
+            GymBadge badge = badgeDAO.findOne(badgeId);
+            count = badgeDAO.getEarnedCount(badge);
             Thread.sleep(3000); // Simulate intensive work
         } catch (InterruptedException e) {
             System.out.println("REEEEEException");
         }
-//        return badgeDAO.getEarnedGymBadges(badge).size();
-        return 2;
+        return count;
     }
 }

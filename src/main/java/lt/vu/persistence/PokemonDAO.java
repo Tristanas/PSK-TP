@@ -3,6 +3,8 @@ package lt.vu.persistence;
 import lt.vu.entities.Pokemon;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.Random;

@@ -6,6 +6,8 @@ import lt.vu.entities.GymBadge;
 import lt.vu.entities.Trainer;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
