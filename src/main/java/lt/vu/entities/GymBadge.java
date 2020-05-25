@@ -22,4 +22,8 @@ public class GymBadge implements Serializable {
 
     @Size(max = 40)
     private String gymName;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }

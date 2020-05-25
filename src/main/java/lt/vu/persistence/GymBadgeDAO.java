@@ -1,6 +1,7 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.GymBadge;
+import lt.vu.mybatis.model.Gymbadge;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,6 +16,10 @@ public class GymBadgeDAO {
     public void persist(GymBadge badge) { em.persist(badge); }
 
     public GymBadge findOne(Integer id) { return em.find(GymBadge.class, id); }
+
+    public GymBadge update(GymBadge badge){
+        return em.merge(badge);
+    }
 
     public List<GymBadge> list() {
         return em.createNamedQuery("GymBadge.findAll", GymBadge.class)

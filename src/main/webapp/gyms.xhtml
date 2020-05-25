@@ -13,7 +13,8 @@
         <ol>
             <ui:repeat value="#{gyms.gyms}" var="gym">
                 <li>
-                    #{gym.gymName}: <h:commandLink action="#{gyms.visitGym(gym)}" value="visit"/>
+                    #{gym.gymName}: <h:commandLink action="#{gyms.visitGym(gym)}" value="visit"/> |
+                    <h:link value="edit" outcome="gym?gymId=#{gym.id}" />
                 </li>
             </ui:repeat>
         </ol>

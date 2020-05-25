@@ -44,6 +44,7 @@ public class TrainerManagement {
     @LoggedInvocation
     public String createGymBadge() {
         badgeDAO.persist(newBadge);
+        System.out.println("Creating a new gym badge: " + newBadge.getGymName());
         return "trainer?faces-redirect=true";
     }
 }
