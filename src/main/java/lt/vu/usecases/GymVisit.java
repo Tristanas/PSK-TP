@@ -54,8 +54,7 @@ public class GymVisit implements Serializable {
         encounteredPokemon.setTrainer(trainer);
         pokemonDAO.persist(encounteredPokemon);
         System.out.println("A pokemon was caught.");
-        trainer.gainXP(100);
-        trainersDAO.update(trainer);
+        trainersDAO.giveXP(100, trainer);
         return "trainer?faces-redirect=true";
     }
 }

@@ -3,17 +3,16 @@ package lt.vu.persistence;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.GymBadge;
+import lt.vu.entities.IXpSource;
 import lt.vu.entities.Trainer;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 @ApplicationScoped
-public class TrainersDAO {
+public class TrainersDAO implements IXpSource {
 
     @Inject
     private EntityManager em;
@@ -53,5 +52,10 @@ public class TrainersDAO {
 
     public Trainer update(Trainer trainer){
         return em.merge(trainer);
+    }
+
+    public void giveXP(int xp, Trainer trainer) {
+        trainer.gainXP(xp);
+        update(trainer);
     }
 }

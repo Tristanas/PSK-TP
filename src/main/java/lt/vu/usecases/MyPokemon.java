@@ -3,6 +3,7 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Pokemon;
+import lt.vu.interceptors.LoggedDeletion;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.PokemonDAO;
 
@@ -69,12 +70,9 @@ public class MyPokemon implements Serializable {
         return getRefreshUrl();
     }
 
-    // Not sure why deleting doesnt work. Also, redirect to trainer page does not work. It seems like first the page is refreshed, then parsing occurs and fails.
     @Transactional
-    @LoggedInvocation
-    public String transfer() {
-        System.out.println("Deleting pokemon: " + viewedPokemon.getId() + " ID, " + viewedPokemon.getName() + ", level " +
-                viewedPokemon.getLevel() + " " + viewedPokemon.getCombatPower());
+    @LoggedDeletion
+    public String transfer(Pokemon viewedPokemon) {
         pokemonDAO.remove(viewedPokemon);
         return "trainer?faces-redirect=true";
     }

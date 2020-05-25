@@ -42,8 +42,7 @@ public class Gyms {
     {
         // Adds a new gym badge, if this is the first visit.
         trainersDAO.addGymBadge(gymBadge, currentTrainer);
-        currentTrainer.gainXP(50);
-        trainersDAO.update(currentTrainer);
+        trainersDAO.giveXP(50, currentTrainer);
         // Could add additional code to add pokemon and possibly items.
         return "gymVisit?faces-redirect=true";
     }

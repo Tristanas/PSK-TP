@@ -8,5 +8,9 @@
 
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
+        <class>lt.vu.interceptors.DeletionLogger</class>
     </interceptors>
+    <decorators>
+        <class>lt.vu.cdi.DoubleXpDecorator</class>
+    </decorators>
 </beans>

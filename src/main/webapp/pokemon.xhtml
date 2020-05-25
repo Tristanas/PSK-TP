@@ -26,7 +26,7 @@
             <f:param value="#{myPokemon.viewedPokemon.id}" name="pokemonId" />
         </h:commandButton>
         <br/>
-        <h:commandLink value="Transfer" action="#{myPokemon.transfer}" />
+        <h:commandLink value="Transfer" action="#{myPokemon.transfer(myPokemon.viewedPokemon)}" />
     </h:form>
     <h:link value="Go to trainer" outcome="trainer" />
 </h:body>

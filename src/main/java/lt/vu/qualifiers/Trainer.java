@@ -10,5 +10,5 @@ import static java.lang.annotation.ElementType.*;
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface Transaction {
+public @interface Trainer {
 }
