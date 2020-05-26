@@ -10,7 +10,7 @@ import java.util.Random;
 @Specializes
 @ApplicationScoped
 public class BoostedPokemonSpawner extends PokemonSpawner {
-    public Pokemon spawnRandomPokemon() // public void setRandomPokemon()
+    public Pokemon spawnRandomPokemon()
     {
         Random rand = new Random();
         Pokemon randomPokemon = new Pokemon();
