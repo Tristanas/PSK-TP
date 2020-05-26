@@ -46,6 +46,8 @@
         </h:commandButton>
     </h:form>
 
-    <h:link outcome="trainer?faces-redirect=true" value="Return to standard implementation" />
+    <h:link outcome="/trainer" value="MyBatis implementation">
+        <f:param name="trainerId" value="#{trainerManagement.trainer.id}" />
+    </h:link>
 </h:body>
 </html>

@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import java.util.List;
 
 @ApplicationScoped
 public class TrainersDAO implements IXpSource {
@@ -35,6 +36,10 @@ public class TrainersDAO implements IXpSource {
                 .getSingleResult();
     }
 
+    public List<Trainer> findAll() {
+        return em.createNamedQuery("Trainer.findAll", Trainer.class).getResultList();
+    }
+
     public boolean hasGymBadge(GymBadge badge, Trainer trainer) {
         return trainer.getGymBadges().contains(badge);
     }
@@ -52,6 +57,10 @@ public class TrainersDAO implements IXpSource {
 
     public Trainer update(Trainer trainer){
         return em.merge(trainer);
+    }
+
+    public void delete(Trainer trainer){
+        em.remove(trainer);
     }
 
     public void giveXP(int xp, Trainer trainer) {

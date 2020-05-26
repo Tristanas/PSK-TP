@@ -3,6 +3,7 @@ package lt.vu.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -19,6 +20,7 @@ public class Pokemon implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="TRAINER_ID")
+    @JsonbTransient
     private Trainer trainer;
 
     @Column(name = "NAME")
