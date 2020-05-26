@@ -3,14 +3,12 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.GymBadge;
-import lt.vu.entities.Pokemon;
 import lt.vu.entities.Trainer;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.cdi.interceptors.LoggedInvocation;
 import lt.vu.persistence.GymBadgeDAO;
 import lt.vu.persistence.TrainersDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -18,7 +16,6 @@ import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 @ViewScoped

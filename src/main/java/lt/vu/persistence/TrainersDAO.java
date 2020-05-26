@@ -3,7 +3,7 @@ package lt.vu.persistence;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.GymBadge;
-import lt.vu.entities.IXpSource;
+import lt.vu.game.IXpSource;
 import lt.vu.entities.Trainer;
 
 import javax.enterprise.context.ApplicationScoped;

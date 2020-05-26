@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.GymBadge;
 import lt.vu.entities.Trainer;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.cdi.interceptors.LoggedInvocation;
 import lt.vu.persistence.GymBadgeDAO;
 import lt.vu.persistence.TrainersDAO;
 

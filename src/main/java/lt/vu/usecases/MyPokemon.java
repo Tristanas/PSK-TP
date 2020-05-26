@@ -3,12 +3,10 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Pokemon;
-import lt.vu.interceptors.LoggedDeletion;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.cdi.interceptors.LoggedDeletion;
 import lt.vu.persistence.PokemonDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.annotation.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;

@@ -3,7 +3,7 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Trainer;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.cdi.interceptors.LoggedInvocation;
 import lt.vu.persistence.TrainersDAO;
 
 import javax.annotation.PostConstruct;

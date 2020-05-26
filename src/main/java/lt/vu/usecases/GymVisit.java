@@ -3,15 +3,14 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Pokemon;
-import lt.vu.entities.Trainer;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.cdi.Catching.ICatchingActivity;
+import lt.vu.cdi.interceptors.LoggedInvocation;
 import lt.vu.persistence.PokemonDAO;
 import lt.vu.persistence.TrainersDAO;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.enterprise.context.BeforeDestroyed;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
@@ -22,13 +21,16 @@ import java.io.Serializable;
 // Thus an unexpected pokemon would be caught.
 // Perhaps the pokemon was shown in one request and caught in a different one, thus a different pokemon was caught.
 @Named
-@ViewScoped
+@SessionScoped
 public class GymVisit implements Serializable {
     @Inject
     private PokemonDAO pokemonDAO;
 
     @Inject
     private TrainersDAO trainersDAO;
+
+    @Inject
+    private ICatchingActivity catchingActivity;
 
     @Setter
     @Getter
@@ -37,7 +39,6 @@ public class GymVisit implements Serializable {
     @PostConstruct
     public void spawnPokemon()
     {
-        System.out.println("Gym visit began.");
         encounteredPokemon = pokemonDAO.getRandomPokemon();
     }
 
@@ -50,11 +51,8 @@ public class GymVisit implements Serializable {
     @Transactional
     public String catchPokemon()
     {
-        Trainer trainer = trainersDAO.getCurrentTrainer();
-        encounteredPokemon.setTrainer(trainer);
-        pokemonDAO.persist(encounteredPokemon);
-        System.out.println("A pokemon was caught.");
-        trainersDAO.giveXP(100, trainer);
-        return "trainer?faces-redirect=true";
+        String navigation_path = catchingActivity.catchPokemon(encounteredPokemon, trainersDAO.getCurrentTrainer());
+        spawnPokemon();
+        return navigation_path;
     }
 }

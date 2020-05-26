@@ -3,21 +3,21 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
 <h:head>
     <title>Encounter</title>
 </h:head>
 <h:body>
     <h2>A wild Pokemon appeared!</h2>
-    <ul>
-        <li>Name: #{gymVisit.encounteredPokemon.name}</li>
-        <li>Level: #{gymVisit.encounteredPokemon.level}</li>
-        <li>CP: #{gymVisit.encounteredPokemon.combatPower}</li>
-    </ul>
     <h:form>
-        <h:commandButton value="Catch it" action="#{gymVisit.catchPokemon}"/>
-        <h:commandButton value="Skip it" action="trainer" />
+        <ul id="pokemon">
+            <li>Name: #{gymVisit.encounteredPokemon.name}</li>
+            <li>Level: #{gymVisit.encounteredPokemon.level}</li>
+            <li>CP: #{gymVisit.encounteredPokemon.combatPower}</li>
+        </ul>
+        <h:commandButton value="Catch it" action="#{gymVisit.catchPokemon}" />
+        <h:commandButton value="Go back" action="trainer" />
     </h:form>
 </h:body>
 </html>

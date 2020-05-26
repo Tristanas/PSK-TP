@@ -7,10 +7,14 @@
         bean-discovery-mode="annotated">
 
     <interceptors>
-        <class>lt.vu.interceptors.MethodLogger</class>
-        <class>lt.vu.interceptors.DeletionLogger</class>
+        <class>lt.vu.cdi.interceptors.MethodLogger</class>
+        <class>lt.vu.cdi.interceptors.DeletionLogger</class>
     </interceptors>
     <decorators>
         <class>lt.vu.cdi.DoubleXpDecorator</class>
     </decorators>
+    <alternatives>
+<!--        <class>lt.vu.cdi.Catching.MultipleEncountersVisit</class>-->
+        <class>lt.vu.cdi.Catching.EndlessEncountersVisit</class>
+    </alternatives>
 </beans>

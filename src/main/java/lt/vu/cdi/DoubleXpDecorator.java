@@ -1,6 +1,6 @@
 package lt.vu.cdi;
 
-import lt.vu.entities.IXpSource;
+import lt.vu.game.IXpSource;
 import lt.vu.entities.Trainer;
 
 import javax.decorator.Decorator;
