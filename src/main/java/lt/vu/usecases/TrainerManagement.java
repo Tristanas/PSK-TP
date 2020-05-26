@@ -20,9 +20,6 @@ public class TrainerManagement {
     private GymBadgeDAO badgeDAO;
 
     @Inject
-    private PokemonDAO pokemonDAO;
-
-    @Inject
     private TrainersDAO trainersDAO;
 
     @Setter

@@ -10,7 +10,7 @@ import java.util.Random;
 
 @ApplicationScoped
 public class RandomNumberGenerator implements IRandom {
-    private Random random = new Random();
+    private final Random random = new Random();
 
     @Produces @Named @RandomCP
     public int getRandomNumber() {

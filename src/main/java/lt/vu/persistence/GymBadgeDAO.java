@@ -1,12 +1,10 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.GymBadge;
-import lt.vu.entities.Trainer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.transaction.TransactionScoped;
 import java.util.List;
 
 @ApplicationScoped

@@ -6,7 +6,6 @@ import lt.vu.services.PokemonSpawner;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.util.Random;
 
 @ApplicationScoped
 public class PokemonDAO {

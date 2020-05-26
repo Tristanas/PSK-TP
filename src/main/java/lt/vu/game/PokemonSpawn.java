@@ -11,9 +11,9 @@ public class PokemonSpawn {
     @Getter @Setter
     private int number;
     @Getter
-    private int level;
+    private final int level;
     @Getter
-    private int cp;
+    private final int cp;
     @Getter @Setter
     private String name;
 
