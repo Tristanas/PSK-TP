@@ -12,18 +12,20 @@
     <h:body>
         <h:form>
             <h2>Viewing gym #{gymView.gym.gymName}</h2>
-            <h:inputText value="#{gymView.gym.gymName}" />
+            <h:inputText value="#{gymView.gym.gymName}" /> <br />
             <h:commandButton value="Rename" action="#{gymView.RenameGym}" >
                 <f:param value="#{gymView.gym.id}" name="gymId" />
             </h:commandButton>
             <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
-            <h:link value="Go to trainer" outcome="trainer" />
         </h:form>
         <h:form>
+            <br />
             <h:outputText value="#{viewGymBadgeStatistics.statisticsRetrievalStatus}"/>
+            <br/>
             <h:commandButton value="How many earned a badge here?" disabled="#{viewGymBadgeStatistics.statisticsRetrievalRunning}" action="#{viewGymBadgeStatistics.getGymBadgeStatistics(gymView.gym.id)}">
                 <f:param name="gymId" value="#{gymView.gym.id}" />
             </h:commandButton>
         </h:form>
+        <h:link value="Go to trainer" outcome="trainer" />
     </h:body>
 </html>
