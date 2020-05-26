@@ -1,22 +1,25 @@
 package lt.vu.game;
 
 import lombok.Getter;
-import lt.vu.entities.Pokemon;
+import lombok.Setter;
+import lt.vu.qualifiers.RandomCP;
+import lt.vu.qualifiers.RandomLevel;
+
+import javax.inject.Inject;
 
 public class PokemonSpawn {
-    @Getter
+    @Getter @Setter
     private int number;
     @Getter
     private int level;
     @Getter
     private int cp;
-    @Getter
+    @Getter @Setter
     private String name;
 
-    public PokemonSpawn(int number, int level, int cp, String name){
-        this.name = name;
-        this.number = number;
+    @Inject
+    public PokemonSpawn(@RandomLevel int level, @RandomCP int cp){
         this.level = level;
-        this.cp = cp;
+        this.cp = cp + level * 24;
     }
 }

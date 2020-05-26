@@ -1,10 +1,9 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.Pokemon;
+import lt.vu.services.PokemonSpawner;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.Random;
@@ -14,29 +13,12 @@ public class PokemonDAO {
     @Inject
     private EntityManager em;
 
-//    private Pokemon randomPokemon = null;
-
-    String[] pokemonNames = {"Pikachu", "Charizard", "Squirtle", "Bulbasaur",
-            "Weedle", "Ratata", "Pidgey", "Wurmple"};
-
-//    public Pokemon getRandomPokemon()
-//    {
-//        if (randomPokemon == null)
-//            setRandomPokemon();
-//        return randomPokemon;
-//    }
+    @Inject
+    private PokemonSpawner spawner;
 
     public Pokemon getRandomPokemon() // public void setRandomPokemon()
     {
-        Random rand = new Random();
-        Pokemon randomPokemon = new Pokemon();
-        int i = rand.nextInt(pokemonNames.length);
-        int randomLevel = rand.nextInt(25);
-        randomPokemon.setNumber(i + 1);
-        randomPokemon.setLevel(randomLevel + 1);
-        randomPokemon.setCombatPower((randomLevel * 24) + rand.nextInt(100));
-        randomPokemon.setName(pokemonNames[i]);
-        return randomPokemon;
+        return spawner.spawnRandomPokemon();
     }
 
     public void update(Pokemon pokemon) { em.merge(pokemon);}

@@ -5,6 +5,7 @@ import lombok.Setter;
 import lt.vu.entities.Pokemon;
 import lt.vu.cdi.Catching.ICatchingActivity;
 import lt.vu.cdi.interceptors.LoggedInvocation;
+import lt.vu.game.PokemonSpawn;
 import lt.vu.persistence.PokemonDAO;
 import lt.vu.persistence.TrainersDAO;
 
